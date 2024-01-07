@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">MyKMTI</string>
+    <string name="entry_anggota">Tambah Anggota</string>
+    <string name="deskripsi_no_data">Tidak ada data pengajuan pendanaan proposal kegiatan. silahkan tap + untuk menambah data pengajuan pendanaan proposal kegiatan</string>
+    <string name="nama">Nama</string>
+    <string name="divisi">Divisi*</string>
+    <string name="telpon">Telpon*</string>
+    <string name="nama1">Nama :</string>
+    <string name="divisi1">Divisi :</string>
+    <string name="telpon1">Telpon :</string>
+    <string name="required_field">* required fields</string>
+    <string name="btn_submit">Submit</string>
+    <string name="detail_siswa">Detail Data</string>
+    <string name="edit_siswa">Edit Data</string>
+    <string name="back">Back</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="delete">Hapus</string>
+    <string name="update">Edit</string>
+    <string name="attention">Perhatian</string>
+    <string name="tanya">Data yang dihapus tidak dapat kembali lagi!</string>
 </resources>
