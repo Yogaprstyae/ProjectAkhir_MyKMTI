@@ -10,13 +10,13 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
-class HomeViewModel(private val  repositorySiswa: RepositoryAnggota): ViewModel() {
+class HomeViewModel(private val  repositoryAnggota: RepositoryAnggota): ViewModel() {
 
     companion object {
         private const val TIMEOUT_MILLIS = 5_000L
     }
 
-    val homeUiState: StateFlow<HomeUiState> = repositorySiswa.getAllAnggotaStream()
+    val homeUiState: StateFlow<HomeUiState> = repositoryAnggota.getAllAnggotaStream()
         .filterNotNull()
         .map { HomeUiState(listAnggota = it.toList()) }
         .stateIn(
