@@ -1,9 +1,12 @@
 package com.example.mykmti.model
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mykmti.halaman.ItemEditDestination
 import com.example.mykmti.repository.RepositoryAnggota
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
@@ -11,8 +14,8 @@ import kotlinx.coroutines.launch
 
 class EditViewModel(
     savedStateHandle: SavedStateHandle,
-    private val repositoryAnggota: RepositoryAnggota
-) : ViewModel() {
+    private val  repositoryAnggota: RepositoryAnggota
+) : ViewModel (){
 
     var anggotaUiState by mutableStateOf(UIStateAnggota())
         private set
@@ -24,13 +27,14 @@ class EditViewModel(
             anggotaUiState = repositoryAnggota.getAllAnggotaStream(itemId)
                 .filterNotNull()
                 .first()
-                .toUIStateAnggota(true)
+                .toUiStateAnggota(true)
         }
     }
 
+
     suspend fun updateAnggota() {
         if (validasiInput(anggotaUiState.detailAnggota)) {
-            repositoryAnggota.updateAnggota(anggotaUiState.detailSiswa.toSiswa())
+            repositoryAnggota.updateAnggota(anggotaUiState.detailAnggota.toAnggota())
         }
         else {
             println("Data tidak valid")
@@ -42,7 +46,7 @@ class EditViewModel(
             UIStateAnggota(detailAnggota = detailAnggota, isEntryValid = validasiInput(detailAnggota))
     }
 
-    private fun validasiInput(uiState: DetailAnggota = anggotaUiState.detailSiswa ): Boolean {
+    private fun validasiInput(uiState: DetailAnggota = anggotaUiState.detailAnggota ): Boolean {
         return with(uiState) {
             nama.isNotBlank() && divisi.isNotBlank() && telpon.isNotBlank()
         }
