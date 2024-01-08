@@ -3,6 +3,7 @@ package com.example.mykmti.model
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mykmti.halaman.DetailsDestination
 import com.example.mykmti.repository.RepositoryAnggota
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +15,7 @@ class DetailViewModel(
     savedStateHandle: SavedStateHandle,
     private val repositoryAnggota: RepositoryAnggota
 ): ViewModel(){
-    private val anggotaId: Int = checkNotNull(savedStateHandle[DetailsDestination.siswaIdArg])
+    private val anggotaId: Int = checkNotNull(savedStateHandle[DetailsDestination.anggotaIdArg])
     val uiState: StateFlow<ItemDetailsUIState> =
         repositoryAnggota.getAnggotaStream(anggotaId)
             .filterNotNull()
