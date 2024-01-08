@@ -10,11 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mykmti.model.EditViewModel
+import com.example.mykmti.model.PenyediaViewModel
+import com.example.mykmti.navigasi.DestinasiNavigasi
 import com.example.roomsiswa.R
-import com.example.roomsiswa.model.EditViewModel
-import com.example.roomsiswa.model.PenyediaViewModel
-import com.example.roomsiswa.navigasi.DestinasiNavigasi
-import com.example.roomsiswa.navigasi.SiswaTopAppBar
 import kotlinx.coroutines.launch
 
 object ItemEditDestination : DestinasiNavigasi {
@@ -35,7 +33,7 @@ fun ItemEditScreen(
     val coroutineScope = rememberCoroutineScope()
     Scaffold(
         topBar = {
-            SiswaTopAppBar(
+            AnggotaTopAppBar(
                 title = stringResource(ItemEditDestination.titleRes),
                 canNavigateBack = true,
                 navigateUp = onNavigateUp
@@ -43,13 +41,13 @@ fun ItemEditScreen(
         },
         modifier = modifier
     ) { innerPadding ->
-        EntrySiswaBody(
-            uiStateSiswa = viewModel.siswaUiState,
-            onSiswaValueChange = viewModel :: updateUiState,
+        EntryAnggotaBody(
+            uiStateAnggota = viewModel.anggotaUiState,
+            onAnggotaValueChange = viewModel :: updateUiState,
             onSaveClick = {
 
                 coroutineScope.launch {
-                    viewModel.updateSiswa()
+                    viewModel.updateAnggota()
                     navigateBack()
                 }
             },
