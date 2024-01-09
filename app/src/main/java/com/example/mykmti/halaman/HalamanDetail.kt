@@ -78,7 +78,7 @@ fun DetailsScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Edit,
-                    contentDescription = stringResource(R.string.edit),
+                    contentDescription = stringResource(R.string.edit_anggota),
                 )
             }
         }, modifier = modifier
