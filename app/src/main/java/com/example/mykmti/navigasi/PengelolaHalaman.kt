@@ -18,6 +18,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.mykmti.halaman.DestinasiEntry
+import com.example.mykmti.halaman.DestinasiHome
+import com.example.mykmti.halaman.DetailsDestination
+import com.example.mykmti.halaman.DetailsScreen
+import com.example.mykmti.halaman.EntryAnggotaScreen
+import com.example.mykmti.halaman.HomeScreen
+import com.example.mykmti.halaman.ItemEditDestination
+import com.example.mykmti.halaman.ItemEditScreen
 
 @Composable
 fun AnggotaApp(
@@ -53,5 +61,45 @@ fun AnggotaTopAppBar(
 @Composable
 fun HostNavigasi(
     navController: NavHostController,
-    modifier: Modifier = Modifier
-) {}
+) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = Modifier
+    ) {
+        composable(DestinasiHome.route) {
+            HomeScreen(
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
+                onDetailClick = { itemId ->
+                    navController.navigate("${DetailsDestination.route}/$itemId")
+                },
+            )
+        }
+        composable(DestinasiEntry.route) {
+            EntryAnggotaScreen(navigateBack = { navController.popBackStack() })
+        }
+
+        composable(
+            DetailsDestination.routeWithArgs,
+            arguments = listOf(navArgument(DetailsDestination.anggotaIdArg) {
+                type = NavType.IntType
+            })
+        ) { backStackEntry ->
+            val itemId = backStackEntry.arguments?.getInt(DetailsDestination.anggotaIdArg)
+            itemId?.let {
+                DetailsScreen(navigasiToEditItem = {navController.navigate("${ItemEditDestination.route}/$it")},
+                    navigateBack = { navController.popBackStack() })
+            }
+        }
+
+        composable(
+            ItemEditDestination.routeWithArgs,
+            arguments = listOf(navArgument(ItemEditDestination.itemIdArg) {
+                type = NavType.IntType
+            })
+        ) {
+            ItemEditScreen(navigateBack = { navController.popBackStack() },
+                onNavigateUp = { navController.navigateUp() })
+        }
+    }
+}

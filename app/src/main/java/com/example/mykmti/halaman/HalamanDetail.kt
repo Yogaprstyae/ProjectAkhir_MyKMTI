@@ -47,7 +47,7 @@ import kotlinx.coroutines.launch
 
 object DetailsDestination : DestinasiNavigasi {
     override val route = "item_details"
-    override val titleRes = R.string.detail_anggota
+    override val titleRes = R.string.detail
     const val anggotaIdArg = "itemId"
     val routeWithArgs = "$route/{${anggotaIdArg}"
 }
@@ -84,7 +84,7 @@ fun DetailsScreen(
         }, modifier = modifier
     ) { innerPadding ->
         ItemDetailsBody(
-            ItemDetailsUiState = uiState.value,
+            itemDetailsUIState = uiState.value,
             onDelete = {
                 coroutineScope.launch {
                     viewModel.deleteItem()
@@ -100,7 +100,7 @@ fun DetailsScreen(
 
 @Composable
 private fun ItemDetailsBody(
-    ItemDetailsUiState: ItemDetailsUIState,
+    itemDetailsUIState : ItemDetailsUIState,
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -110,7 +110,7 @@ private fun ItemDetailsBody(
     ) {
         var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
         ItemDetails(
-            anggota = ItemDetailsUiState.detailAnggota.toAnggota(),
+            anggota = itemDetailsUIState.detailAnggota.toAnggota(),
             modifier = Modifier.fillMaxWidth()
         )
         OutlinedButton(
@@ -208,4 +208,21 @@ private fun DeleteConfirmationDialog(
     onDeleteConfirm: () -> Unit,
     onDeleteCancel: () -> Unit,
     modifier: Modifier = Modifier
-){}
+){
+    AlertDialog(
+        onDismissRequest = { /*TODO*/ },
+        title = { Text(stringResource(id = R.string.attention)) },
+        text = { Text(stringResource(id = R.string.delete)) },
+        modifier = modifier,
+        dismissButton = {
+            TextButton(onClick = onDeleteCancel) {
+                Text(text = stringResource(id = R.string.no))
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDeleteConfirm) {
+                Text(text = stringResource(id = R.string.yes))
+            }
+        }
+    )
+}
