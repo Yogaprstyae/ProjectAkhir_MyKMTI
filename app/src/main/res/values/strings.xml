@@ -10,8 +10,8 @@
     <string name="telpon1">Telpon :</string>
     <string name="required_field">* required fields</string>
     <string name="btn_submit">Submit</string>
-    <string name="detail">Detail Data</string>
-    <string name="edit">Edit Data</string>
+    <string name="detail_siswa">Detail Data</string>
+    <string name="edit_siswa">Edit Data</string>
     <string name="back">Back</string>
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
