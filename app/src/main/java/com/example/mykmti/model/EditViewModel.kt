@@ -6,8 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mykmti.halaman.ItemEditDestination
 import com.example.mykmti.repository.RepositoryAnggota
+import com.example.roomsiswa.Halaman.ItemEditDestination
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
@@ -24,10 +24,10 @@ class EditViewModel(
 
     init {
         viewModelScope.launch {
-            anggotaUiState = repositoryAnggota.getAllAnggotaStream(itemId)
+            anggotaUiState = repositoryAnggota.getAnggotaStream(itemId)
                 .filterNotNull()
                 .first()
-                .toUiStateAnggota(true)
+                .toUIStateAnggota(true)
         }
     }
 
