@@ -13,9 +13,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -138,7 +142,7 @@ fun FormInputAnggota(
         )
         OutlinedTextField(
             value = detailAnggota.namaKeg,
-            onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
+            onValueChange = {onValueChange(detailAnggota.copy(namaKeg = it))},
             label = { Text("Nama Kegiatan Yang Akan Dilaksanakan")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
@@ -146,7 +150,7 @@ fun FormInputAnggota(
         )
         OutlinedTextField(
             value = detailAnggota.desKeg,
-            onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
+            onValueChange = {onValueChange(detailAnggota.copy(desKeg = it))},
             label = { Text("Deskripsi kan Kegiatan Secara Detail")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
@@ -154,7 +158,15 @@ fun FormInputAnggota(
         )
         OutlinedTextField(
             value = detailAnggota.tglKeg,
-            onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
+            onValueChange = {onValueChange(detailAnggota.copy(tglKeg = it))},
+            trailingIcon = {
+                           IconButton(onClick = {}) {
+                               Icon(
+                                  imageVector = Icons.Default.DateRange,
+                                   contentDescription = "Date Picker"
+                               )
+                           }
+            },
             label = { Text("Tanggal Berlangsung nya Kegiatan")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
