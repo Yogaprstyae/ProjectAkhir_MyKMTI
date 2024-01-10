@@ -19,6 +19,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.List
@@ -26,6 +27,8 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -130,7 +133,15 @@ fun FormInputAnggota(
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
 
     ){
-
+    val divisi = listOf(
+            "Pimpinan Harian",
+            "Hubungan Masyarakat",
+            "Seni Budaya dan Olahraga",
+            "Ilmu Pengetahuan dan Teknologi",
+            "Kerohanian",
+            "Media Propaganda",
+            "Kajian Strategi dan Advokasi",
+            "Kewirausahaan")
 
         OutlinedTextField(
             value = detailAnggota.nama,
@@ -153,8 +164,18 @@ fun FormInputAnggota(
             },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
-            singleLine = true
+            singleLine = true,
+            readOnly = true,
+            trailingIcon = {
+                IconButton(onClick = {}) {
+                    Icon(imageVector = Icons.Default.ArrowDropDown, contentDescription = null)
+                }
+            }
         )
+        DropdownMenu(
+            expanded = false, onDismissRequest = {},
+            modifier = Modifier.fillMaxWidth()
+        ){}
         OutlinedTextField(
             value = detailAnggota.telpon,
             onValueChange = {onValueChange(detailAnggota.copy(telpon = it))},
