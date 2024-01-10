@@ -13,7 +13,8 @@ data class Anggota(
     val namaKeg : String,
     val desKeg : String,
     val tglKeg : String,
-    val dana : String
+    val dana : String,
+    val pdf : String? = null
 )
 
 
