@@ -114,7 +114,7 @@ fun FormInputAnggota(
         OutlinedTextField(
             value = detailAnggota.nama,
             onValueChange = {onValueChange(detailAnggota.copy(nama = it))},
-            label = { Text(stringResource(R.string.nama))},
+            label = { Text("Nama Yang Mengajukan")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -122,7 +122,7 @@ fun FormInputAnggota(
         OutlinedTextField(
             value = detailAnggota.divisi,
             onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
-            label = { Text(stringResource(R.string.divisi))},
+            label = { Text("Divisi Yang Mengajukan")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -131,11 +131,12 @@ fun FormInputAnggota(
             value = detailAnggota.telpon,
             onValueChange = {onValueChange(detailAnggota.copy(telpon = it))},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-            label = { Text(stringResource(R.string.telpon))},
+            label = { Text("Telepon")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
+
 
         if (enabled){
             Text(
