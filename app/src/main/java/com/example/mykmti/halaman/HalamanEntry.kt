@@ -19,6 +19,9 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -138,6 +141,9 @@ fun FormInputAnggota(
             value = detailAnggota.nama,
             onValueChange = {onValueChange(detailAnggota.copy(nama = it))},
             label = { Text("Nama Lengkap")},
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Person, contentDescription = null)
+            },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -146,6 +152,9 @@ fun FormInputAnggota(
             value = detailAnggota.divisi,
             onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
             label = { Text("Divisi")},
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.List, contentDescription = null)
+            },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -155,6 +164,9 @@ fun FormInputAnggota(
             onValueChange = {onValueChange(detailAnggota.copy(telpon = it))},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             label = { Text("Telepon")},
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Phone, contentDescription = null)
+            },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
