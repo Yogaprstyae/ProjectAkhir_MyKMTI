@@ -137,9 +137,33 @@ fun FormInputAnggota(
             singleLine = true
         )
         OutlinedTextField(
-            value = detailAnggota.divisi,
+            value = detailAnggota.namaKeg,
             onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
-            label = { Text("Divisi Yang Mengajukan")},
+            label = { Text("Nama Kegiatan Yang Akan Dilaksanakan")},
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
+            value = detailAnggota.desKeg,
+            onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
+            label = { Text("Deskripsi kan Kegiatan Secara Detail")},
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
+            value = detailAnggota.tglKeg,
+            onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
+            label = { Text("Tanggal Berlangsung nya Kegiatan")},
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
+        OutlinedTextField(
+            value = detailAnggota.dana,
+            onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
+            label = { Text("Total Dana Yang Diminta")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
