@@ -48,7 +48,13 @@ class EditViewModel(
 
     private fun validasiInput(uiState: DetailAnggota = anggotaUiState.detailAnggota ): Boolean {
         return with(uiState) {
-            nama.isNotBlank() && divisi.isNotBlank() && telpon.isNotBlank()
+            nama.isNotBlank()
+                    && divisi.isNotBlank()
+                    && telpon.isNotBlank()
+                    && namaKeg.isNotBlank()
+                    && desKeg.isNotBlank()
+                    && tglKeg.isNotBlank()
+                    && dana.isNotBlank()
         }
     }
 }
