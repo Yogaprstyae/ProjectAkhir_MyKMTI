@@ -22,3 +22,8 @@ data class regis(
     val email: String,
     val password: String,
 )
+data class login(
+    @PrimaryKey(autoGenerate = true)
+    val email : String,
+    val password : String
+)
