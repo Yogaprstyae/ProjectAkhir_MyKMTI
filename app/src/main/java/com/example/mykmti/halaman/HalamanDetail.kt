@@ -47,7 +47,7 @@ import kotlinx.coroutines.launch
 
 object DetailsDestination : DestinasiNavigasi {
     override val route = "item_details"
-    override val titleRes = R.string.detail
+    override val titleRes = R.string.detail_anggota
     const val anggotaIdArg = "itemId"
     val routeWithArgs = "$route/{${anggotaIdArg}"
 }
@@ -78,7 +78,7 @@ fun DetailsScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Edit,
-                    contentDescription = stringResource(R.string.edit_anggota),
+                    contentDescription = stringResource(R.string.edit_angggota),
                 )
             }
         }, modifier = modifier
