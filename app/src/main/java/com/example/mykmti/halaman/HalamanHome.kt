@@ -174,6 +174,7 @@ fun DataAnggota(
                     text = anggota.telpon,
                     style = MaterialTheme.typography.titleMedium
                 )
+
             }
         }
     }
