@@ -186,10 +186,6 @@ fun DataAnggota(
                     text = anggota.tglKeg,
                     style = MaterialTheme.typography.titleLarge
                 )
-                Text(
-                    text = anggota.dana,
-                    style = MaterialTheme.typography.titleLarge
-                )
             }
         }
     }
