@@ -10,6 +10,7 @@ import com.example.mykmti.navigasi.AnggotaTopAppBar
 import com.example.mykmti.navigasi.DestinasiNavigasi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -124,19 +125,14 @@ fun FormInputAnggota(
     enabled: Boolean = true
 ){
     Column (
-        modifier = modifier,
+        modifier = modifier
+            .fillMaxSize()
+            .padding(16.dp)
+            .background(Color.Blue),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+
     ){
-        Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
-            contentDescription = null,
-            modifier = Modifier
-                .size(120.dp)
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primary)
-                .padding(16.dp),
-            contentScale = ContentScale.Crop
-        )
+
 
         OutlinedTextField(
             value = detailAnggota.nama,
