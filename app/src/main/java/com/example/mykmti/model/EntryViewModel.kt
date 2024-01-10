@@ -12,7 +12,13 @@ class EntryViewModel(private val repositoryAnggota: RepositoryAnggota): ViewMode
         private set
     private fun validasiInput(uiState: DetailAnggota = uiStateAnggota.detailAnggota): Boolean {
         return with(uiState) {
-            nama.isNotBlank() && divisi.isNotBlank() && telpon.isNotBlank()
+            nama.isNotBlank()
+                    && divisi.isNotBlank()
+                    && telpon.isNotBlank()
+                    && namaKeg.isNotBlank()
+                    && desKeg.isNotBlank()
+                    && tglKeg.isNotBlank()
+                    && dana.isNotBlank()
         }
     }
     fun updateUIState(detailAnggota: DetailAnggota) {
@@ -34,12 +40,20 @@ data class DetailAnggota(
     val nama: String = "",
     val divisi: String = "",
     val telpon: String = "",
+    val namaKeg : String = "",
+    val desKeg : String = "",
+    val tglKeg : String = "",
+    val dana : String = ""
 )
 fun DetailAnggota.toAnggota(): Anggota = Anggota(
     id = id,
     nama = nama,
     divisi = divisi,
-    telpon = telpon
+    telpon = telpon,
+    namaKeg = namaKeg,
+    desKeg = desKeg,
+    tglKeg = tglKeg,
+    dana = dana
 )
 fun Anggota.toUIStateAnggota(isEntryValid: Boolean = false): UIStateAnggota = UIStateAnggota(
     detailAnggota = this.toDetailAnggota(),
@@ -49,5 +63,9 @@ fun Anggota.toDetailAnggota(): DetailAnggota = DetailAnggota(
     id = id,
     nama = nama,
     divisi = divisi,
-    telpon = telpon
+    telpon = telpon,
+    namaKeg = namaKeg,
+    desKeg = desKeg,
+    tglKeg = tglKeg,
+    dana = dana
 )

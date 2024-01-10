@@ -136,7 +136,14 @@ fun FormInputAnggota(
             enabled = enabled,
             singleLine = true
         )
-
+        OutlinedTextField(
+            value = detailAnggota.divisi,
+            onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
+            label = { Text("Divisi Yang Mengajukan")},
+            modifier = Modifier.fillMaxWidth(),
+            enabled = enabled,
+            singleLine = true
+        )
 
         if (enabled){
             Text(
