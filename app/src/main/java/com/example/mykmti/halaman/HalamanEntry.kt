@@ -20,6 +20,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
@@ -125,10 +126,7 @@ fun FormInputAnggota(
     enabled: Boolean = true
 ){
     Column (
-        modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp)
-            .background(Color.Blue),
+        modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
 
     ){
@@ -173,6 +171,9 @@ fun FormInputAnggota(
             value = detailAnggota.namaKeg,
             onValueChange = {onValueChange(detailAnggota.copy(namaKeg = it))},
             label = { Text("Nama Kegiatan")},
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Edit, contentDescription = null)
+            },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -181,6 +182,9 @@ fun FormInputAnggota(
             value = detailAnggota.desKeg,
             onValueChange = {onValueChange(detailAnggota.copy(desKeg = it))},
             label = { Text("Deskripsi Kegiatan")},
+            leadingIcon = {
+                Icon(imageVector = Icons.Default.Edit, contentDescription = null)
+            },
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
