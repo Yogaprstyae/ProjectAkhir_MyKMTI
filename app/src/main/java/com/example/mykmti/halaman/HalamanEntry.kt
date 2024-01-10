@@ -146,8 +146,7 @@ fun FormInputAnggota(
                 Icon(imageVector = Icons.Default.Person, contentDescription = null)
             },
             modifier = Modifier
-                .fillMaxWidth()
-                .background(Color.Yellow),
+                .fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
