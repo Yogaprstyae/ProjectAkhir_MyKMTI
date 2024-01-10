@@ -9,5 +9,9 @@ data class Anggota(
     val id : Int = 0,
     val nama : String,
     val divisi : String,
-    val telpon : String
+    val telpon : String,
+    val namaKeg : String,
+    val desKeg : String,
+    val tglKeg : String,
+    val dana : String
 )
