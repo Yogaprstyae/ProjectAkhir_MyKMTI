@@ -1,6 +1,5 @@
 package com.example.mykmti.navigasi
 
-import com.example.roomsiswa.R
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -18,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.mykmti.R
 import com.example.mykmti.halaman.DestinasiEntry
 import com.example.mykmti.halaman.DestinasiHome
 import com.example.mykmti.halaman.DetailsDestination
@@ -30,7 +30,7 @@ import com.example.mykmti.halaman.ItemEditScreen
 @Composable
 fun KMTIApp(
     navController: NavHostController = rememberNavController()){
-    HostNavigasi(navController = navController)
+    Navigasi(navController = navController)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -38,7 +38,6 @@ fun KMTIApp(
 fun AnggotaTopAppBar(
     title: String,
     canNavigateBack: Boolean,
-    modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     navigateUp: () -> Unit = {}
 ){
@@ -59,7 +58,7 @@ fun AnggotaTopAppBar(
 }
 
 @Composable
-fun HostNavigasi(
+fun Navigasi(
     navController: NavHostController,
 ) {
     NavHost(
@@ -67,13 +66,9 @@ fun HostNavigasi(
         startDestination = DestinasiHome.route,
         modifier = Modifier
     ) {
-        composable(DestinasiHome.route) {
-            HomeScreen(
-                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
-                onDetailClick = { itemId ->
-                    navController.navigate("${DetailsDestination.route}/$itemId")
-                },
-            )
+        composable(DestinasiHome.route
+        ) {
+            HomeScreen(navigateToItemEntry = {navController.navigate(DestinasiEntry.route)})
         }
         composable(DestinasiEntry.route) {
             EntryAnggotaScreen(navigateBack = { navController.popBackStack() })

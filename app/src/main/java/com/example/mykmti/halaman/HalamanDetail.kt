@@ -42,14 +42,14 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.roomsiswa.R
+import com.example.mykmti.R
 import kotlinx.coroutines.launch
 
 object DetailsDestination : DestinasiNavigasi {
     override val route = "item_details"
     override val titleRes = R.string.detail_anggota
     const val anggotaIdArg = "itemId"
-    val routeWithArgs = "$route/{${anggotaIdArg}"
+    val routeWithArgs = "$route/{$anggotaIdArg"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -78,7 +78,7 @@ fun DetailsScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Edit,
-                    contentDescription = stringResource(R.string.edit_angggota),
+                    contentDescription = stringResource(R.string.edit_anggota),
                 )
             }
         }, modifier = modifier
@@ -130,25 +130,6 @@ private fun ItemDetailsBody(
             )
         }
     }
-}
-
-@Composable
-private fun DeleteConfirmationButton(
-    onDeleteConfirm: () -> Unit, onDeleteCancel: () -> Unit, modifier: Modifier = Modifier
-){
-    AlertDialog(onDismissRequest = {},
-        title = { Text(stringResource(R.string.attention))},
-        text = { Text(stringResource(R.string.delete))},
-        modifier = modifier,
-        dismissButton = { TextButton(onClick = onDeleteCancel) {
-            Text(text = stringResource(R.string.no))
-        }},
-        confirmButton = {
-            TextButton(onClick = onDeleteConfirm) {
-                Text(text = stringResource(R.string.yes))
-            }
-        }
-    )
 }
 
 @Composable

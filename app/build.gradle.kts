@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.roomsiswa"
+    namespace = "com.example.mykmti"
     compileSdk = 34
 
     defaultConfig {

@@ -8,16 +8,16 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.mykmti.R
 import com.example.mykmti.model.EditViewModel
 import com.example.mykmti.model.PenyediaViewModel
 import com.example.mykmti.navigasi.AnggotaTopAppBar
 import com.example.mykmti.navigasi.DestinasiNavigasi
-import com.example.roomsiswa.R
 import kotlinx.coroutines.launch
 
 object ItemEditDestination : DestinasiNavigasi {
     override val route = "item_edit"
-    override val titleRes = R.string.edit_angggota
+    override val titleRes = R.string.edit_anggota
     const val itemIdArg = "itemId"
     val routeWithArgs = "$route/{$itemIdArg}"
 }
