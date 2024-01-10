@@ -174,6 +174,22 @@ fun DataAnggota(
                     text = anggota.telpon,
                     style = MaterialTheme.typography.titleMedium
                 )
+                Text(
+                    text = anggota.namaKeg,
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Text(
+                    text = anggota.desKeg,
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Text(
+                    text = anggota.tglKeg,
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Text(
+                    text = anggota.dana,
+                    style = MaterialTheme.typography.titleLarge
+                )
             }
         }
     }
