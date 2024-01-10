@@ -43,7 +43,7 @@ data class DetailAnggota(
     val namaKeg : String = "",
     val desKeg : String = "",
     val tglKeg : String = "",
-    val dana : String = ""
+    val dana : String = "",
 )
 fun DetailAnggota.toAnggota(): Anggota = Anggota(
     id = id,
@@ -53,7 +53,7 @@ fun DetailAnggota.toAnggota(): Anggota = Anggota(
     namaKeg = namaKeg,
     desKeg = desKeg,
     tglKeg = tglKeg,
-    dana = dana
+    dana = dana,
 )
 fun Anggota.toUIStateAnggota(isEntryValid: Boolean = false): UIStateAnggota = UIStateAnggota(
     detailAnggota = this.toDetailAnggota(),
@@ -67,5 +67,5 @@ fun Anggota.toDetailAnggota(): DetailAnggota = DetailAnggota(
     namaKeg = namaKeg,
     desKeg = desKeg,
     tglKeg = tglKeg,
-    dana = dana
+    dana = dana,
 )
