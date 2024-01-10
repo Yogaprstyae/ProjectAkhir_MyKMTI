@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -35,8 +36,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mykmti.R
 
@@ -139,30 +142,34 @@ fun DataAnggota(
     anggota: Anggota,
     modifier: Modifier = Modifier
 ){
-    Card (
-        modifier = Modifier,
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
-    ){
-        Column (
+    Card(
+        modifier = modifier, elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
+    ) {
+        Column(
             modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large)),
             verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
-        ){
-            Row (
+        ) {
+            Row(
                 modifier = Modifier.fillMaxWidth()
-            ){
+            ) {
                 Text(
                     text = anggota.nama,
                     style = MaterialTheme.typography.titleLarge,
                 )
-                Text(
-                    text = anggota.divisi,
-                    style = MaterialTheme.typography.titleMedium
-                )
                 Spacer(Modifier.weight(1f))
+            }
+            Text(
+                text = anggota.divisi,
+                style = MaterialTheme.typography.titleLarge
+            )
+            Row (
+                modifier = Modifier.fillMaxWidth()
+            ){
                 Icon(
                     imageVector = Icons.Default.Phone,
-                    contentDescription = null,
+                    contentDescription = null
                 )
+                Spacer(modifier = Modifier.padding(3.dp))
                 Text(
                     text = anggota.telpon,
                     style = MaterialTheme.typography.titleMedium

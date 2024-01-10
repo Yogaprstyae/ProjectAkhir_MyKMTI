@@ -29,6 +29,7 @@ import com.example.mykmti.halaman.ItemEditScreen
 
 @Composable
 fun KMTIApp(
+    modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController()){
     Navigasi(navController = navController)
 }
@@ -38,6 +39,7 @@ fun KMTIApp(
 fun AnggotaTopAppBar(
     title: String,
     canNavigateBack: Boolean,
+    modifier: Modifier = Modifier,
     scrollBehavior: TopAppBarScrollBehavior? = null,
     navigateUp: () -> Unit = {}
 ){
@@ -60,15 +62,19 @@ fun AnggotaTopAppBar(
 @Composable
 fun Navigasi(
     navController: NavHostController,
+    modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = navController,
         startDestination = DestinasiHome.route,
         modifier = Modifier
     ) {
-        composable(DestinasiHome.route
-        ) {
-            HomeScreen(navigateToItemEntry = {navController.navigate(DestinasiEntry.route)})
+        composable(DestinasiHome.route) {
+            HomeScreen(navigateToItemEntry = {navController.navigate(DestinasiEntry.route)},
+                onDetailClick = { itemId ->
+                    navController.navigate("${DetailsDestination.route}/$itemId")
+                },
+            )
         }
         composable(DestinasiEntry.route) {
             EntryAnggotaScreen(navigateBack = { navController.popBackStack() })
