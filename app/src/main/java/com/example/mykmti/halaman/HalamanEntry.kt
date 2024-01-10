@@ -1,5 +1,6 @@
 package com.example.mykmti.halaman
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import com.example.mykmti.model.DetailAnggota
@@ -38,7 +39,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -128,12 +133,14 @@ fun FormInputAnggota(
     onValueChange: (DetailAnggota) -> Unit = {},
     enabled: Boolean = true
 ){
+    var pdfUri by remember { mutableStateOf<Uri?>(null) }
+
     Column (
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
 
     ){
-    val divisi = listOf(
+    val divisiList = listOf(
             "Pimpinan Harian",
             "Hubungan Masyarakat",
             "Seni Budaya dan Olahraga",
@@ -173,9 +180,13 @@ fun FormInputAnggota(
             }
         )
         DropdownMenu(
-            expanded = false, onDismissRequest = {},
+            expanded = false,
+            onDismissRequest = {},
             modifier = Modifier.fillMaxWidth()
-        ){}
+        ){
+            divisiList.forEach {divisi ->
+            }
+        }
         OutlinedTextField(
             value = detailAnggota.telpon,
             onValueChange = {onValueChange(detailAnggota.copy(telpon = it))},
@@ -234,6 +245,7 @@ fun FormInputAnggota(
             enabled = enabled,
             singleLine = true
         )
+
 
         if (enabled){
             Text(
