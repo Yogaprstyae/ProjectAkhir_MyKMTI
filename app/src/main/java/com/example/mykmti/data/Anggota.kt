@@ -15,3 +15,10 @@ data class Anggota(
     val tglKeg : String,
     val dana : String
 )
+
+data class regis(
+    @PrimaryKey(autoGenerate = true)
+    val nama: String,
+    val email: String,
+    val password: String,
+)
