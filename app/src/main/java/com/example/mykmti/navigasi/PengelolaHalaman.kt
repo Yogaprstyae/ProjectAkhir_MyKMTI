@@ -28,7 +28,7 @@ import com.example.mykmti.halaman.ItemEditDestination
 import com.example.mykmti.halaman.ItemEditScreen
 
 @Composable
-fun AnggotaApp(
+fun KMTIApp(
     navController: NavHostController = rememberNavController()){
     HostNavigasi(navController = navController)
 }
@@ -50,7 +50,7 @@ fun AnggotaTopAppBar(
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.back) )
+                        contentDescription = stringResource(R.string.btn_back) )
 
                 }
             }
