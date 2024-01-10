@@ -118,7 +118,7 @@ fun FormInputAnggota(
         OutlinedTextField(
             value = detailAnggota.nama,
             onValueChange = {onValueChange(detailAnggota.copy(nama = it))},
-            label = { Text("Nama Yang Mengajukan")},
+            label = { Text("Nama Lengkap")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -126,7 +126,7 @@ fun FormInputAnggota(
         OutlinedTextField(
             value = detailAnggota.divisi,
             onValueChange = {onValueChange(detailAnggota.copy(divisi = it))},
-            label = { Text("Divisi Yang Mengajukan")},
+            label = { Text("Divisi")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -143,7 +143,7 @@ fun FormInputAnggota(
         OutlinedTextField(
             value = detailAnggota.namaKeg,
             onValueChange = {onValueChange(detailAnggota.copy(namaKeg = it))},
-            label = { Text("Nama Kegiatan Yang Akan Dilaksanakan")},
+            label = { Text("Nama Kegiatan")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -151,7 +151,7 @@ fun FormInputAnggota(
         OutlinedTextField(
             value = detailAnggota.desKeg,
             onValueChange = {onValueChange(detailAnggota.copy(desKeg = it))},
-            label = { Text("Deskripsi kan Kegiatan Secara Detail")},
+            label = { Text("Deskripsi Kegiatan")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
@@ -167,7 +167,7 @@ fun FormInputAnggota(
                                )
                            }
             },
-            label = { Text("Tanggal Berlangsung nya Kegiatan")},
+            label = { Text("Tanggal Mulai Kegiatan")},
             modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
