@@ -16,7 +16,7 @@ data class Anggota(
     val dana : String
 )
 
-data class regis(
+data class registrasi(
     @PrimaryKey(autoGenerate = true)
     val nama: String,
     val email: String,
