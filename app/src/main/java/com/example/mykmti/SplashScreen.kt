@@ -5,7 +5,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -21,6 +20,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.mykmti.halaman.DestinasiHome
+import com.example.mykmti.navigasi.Screen
 import kotlinx.coroutines.delay
 
 @Composable
@@ -35,7 +35,7 @@ fun SplashScreen (navController: NavHostController){
     LaunchedEffect(key1 = true) {
         starAnimation = true
         delay(1000)
-        navController.navigate(DestinasiHome.route)
+        navController.navigate(Screen.Awal.route)
     }
     Splash(alpha = alphaAnim.value)
 }

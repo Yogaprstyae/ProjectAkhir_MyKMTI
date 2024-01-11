@@ -6,6 +6,7 @@
     <string name="first">First Name</string>
     <string name="last">Last Name</string>
     <string name="email">Email</string>
+    <string name="halaman_awal">Halaman Awal</string>
     <string name="entry_anggota">Tambah Anggota</string>
     <string name="deskripsi_no_data">Tidak ada data pengajuan pendanaan proposal kegiatan. silahkan tap + untuk menambah data pengajuan pendanaan proposal kegiatan</string>
     <string name="nama">Nama Yang Mengajukan</string>

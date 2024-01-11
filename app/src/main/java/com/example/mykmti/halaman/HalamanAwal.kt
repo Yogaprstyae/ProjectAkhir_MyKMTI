@@ -27,12 +27,23 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.mykmti.R
+import com.example.mykmti.components.CButton
+import com.example.mykmti.components.DontHaveAccountRow
+import com.example.mykmti.navigasi.DestinasiNavigasi
+import com.example.mykmti.navigasi.Screen
 import com.example.mykmti.ui.theme.AlegreyaFontFamily
 import com.example.mykmti.ui.theme.AlegreyaSansFontFamily
 
+object DestinasiAwal : DestinasiNavigasi {
+    override val route = "awal"
+    override val titleRes = R.string.halaman_awal
+}
 @Composable
 fun HalamanAwal(
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     Box(modifier = Modifier.fillMaxSize()
@@ -74,7 +85,7 @@ fun HalamanAwal(
 
                 Spacer(modifier = Modifier.weight(1f))
 
-                Button(onClick = { /*TODO*/ },
+                Button(onClick = { navController.navigate(Screen.Login.route)},
                     shape = MaterialTheme.shapes.medium,
                     colors = ButtonDefaults.buttonColors(
                         containerColor = Color.Black
@@ -91,26 +102,9 @@ fun HalamanAwal(
                         color = Color.White
                     )
                 ) }
-
-                Row (
-                    modifier = Modifier.padding(top = 12.dp, bottom = 52.dp)
-                ){
-                    Text("Tidak Punya Akun? ",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontFamily = AlegreyaSansFontFamily,
-                            color = Color.Black
-                        )
-                        )
-                    Text("Sign Up",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontFamily = AlegreyaSansFontFamily,
-                            fontWeight = FontWeight(800),
-                            color = Color.Blue
-                        )
-                        )
-                }
+            DontHaveAccountRow(
+                navController
+            )
         }
     }
 }
@@ -119,5 +113,5 @@ fun HalamanAwal(
 @Preview(showBackground = true, widthDp = 320, heightDp = 640)
 @Composable
 fun HalamanAwalPreview(){
-    HalamanAwal()
+    HalamanAwal(rememberNavController())
 }

@@ -25,6 +25,9 @@ import com.example.mykmti.halaman.DestinasiHome
 import com.example.mykmti.halaman.DetailsDestination
 import com.example.mykmti.halaman.DetailsScreen
 import com.example.mykmti.halaman.EntryAnggotaScreen
+import com.example.mykmti.halaman.HalamanAwal
+import com.example.mykmti.halaman.HalamanLogin
+import com.example.mykmti.halaman.HalamanRegiter
 import com.example.mykmti.halaman.HomeScreen
 import com.example.mykmti.halaman.ItemEditDestination
 import com.example.mykmti.halaman.ItemEditScreen
@@ -73,6 +76,15 @@ fun Navigasi(
     ) {
         composable(route = Screen.Splash.route){
             SplashScreen(navController)
+        }
+        composable(route = Screen.Awal.route){
+            HalamanAwal(navController)
+        }
+        composable(route = Screen.Login.route){
+            HalamanLogin(navController)
+        }
+        composable(route = Screen.Regis.route){
+            HalamanRegiter(navController)
         }
         composable(DestinasiHome.route) {
             HomeScreen(navigateToItemEntry = {navController.navigate(DestinasiEntry.route)},
