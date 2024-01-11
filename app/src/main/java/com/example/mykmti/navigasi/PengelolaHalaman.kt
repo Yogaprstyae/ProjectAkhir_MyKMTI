@@ -1,5 +1,6 @@
 package com.example.mykmti.navigasi
 
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
@@ -18,7 +19,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.mykmti.R
-import com.example.mykmti.Splash
 import com.example.mykmti.SplashScreen
 import com.example.mykmti.halaman.DestinasiEntry
 import com.example.mykmti.halaman.DestinasiHome
@@ -31,13 +31,6 @@ import com.example.mykmti.halaman.HalamanRegiter
 import com.example.mykmti.halaman.HomeScreen
 import com.example.mykmti.halaman.ItemEditDestination
 import com.example.mykmti.halaman.ItemEditScreen
-
-@Composable
-fun KMTIApp(
-    modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController()){
-    Navigasi(navController = navController)
-}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -63,34 +56,35 @@ fun AnggotaTopAppBar(
         }
     )
 }
-
 @Composable
 fun Navigasi(
-    navController: NavHostController,
+    navController: NavHostController = rememberNavController(),
     modifier: Modifier = Modifier
 ) {
     NavHost(
         navController = navController,
         startDestination = Screen.Splash.route,
-        modifier = Modifier
+        modifier = Modifier.fillMaxSize()
     ) {
-        composable(route = Screen.Splash.route){
+        composable(Screen.Splash.route){
             SplashScreen(navController)
         }
-        composable(route = Screen.Awal.route){
+        composable(Screen.Awal.route){
             HalamanAwal(navController)
         }
-        composable(route = Screen.Login.route){
+        composable(Screen.Login.route){
             HalamanLogin(navController)
         }
-        composable(route = Screen.Regis.route){
+        composable(Screen.Regis.route){
             HalamanRegiter(navController)
         }
-        composable(DestinasiHome.route) {
-            HomeScreen(navigateToItemEntry = {navController.navigate(DestinasiEntry.route)},
-                onDetailClick = { itemId ->
+        composable(route = DestinasiHome.route) {
+            HomeScreen(
+                onDetailClick = {
+                        itemId ->
                     navController.navigate("${DetailsDestination.route}/$itemId")
                 },
+                navigateToItemEntry = {navController.navigate(DestinasiEntry.route)},
             )
         }
         composable(DestinasiEntry.route) {
@@ -105,8 +99,10 @@ fun Navigasi(
         ) { backStackEntry ->
             val itemId = backStackEntry.arguments?.getInt(DetailsDestination.anggotaIdArg)
             itemId?.let {
-                DetailsScreen(navigasiToEditItem = {navController.navigate("${ItemEditDestination.route}/$it")},
-                    navigateBack = { navController.popBackStack() })
+                DetailsScreen(
+                    navigateBack = { navController.popBackStack() },
+                    navigateToEditItem = { navController.navigate("${ItemEditDestination.route}/$it") }
+                )
             }
         }
 

@@ -2,6 +2,7 @@ package com.example.mykmti.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,7 +30,7 @@ fun DontHaveAccountRow(
                 color = Color.Black
             )
         )
-
+        Spacer(modifier = Modifier.padding(2.dp))
         Text("Sign Up",
             style = TextStyle(
                 fontSize = 18.sp,

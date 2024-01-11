@@ -19,12 +19,14 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.mykmti.halaman.DestinasiHome
+import androidx.navigation.compose.rememberNavController
 import com.example.mykmti.navigasi.Screen
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen (navController: NavHostController){
+fun SplashScreen (
+    navController: NavHostController = rememberNavController()
+){
     var starAnimation by remember { mutableStateOf(false) }
     val alphaAnim = animateFloatAsState(
         targetValue = if (starAnimation) 1f else 0f,

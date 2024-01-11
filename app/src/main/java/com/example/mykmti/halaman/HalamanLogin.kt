@@ -10,6 +10,10 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -17,16 +21,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.mykmti.R
 import com.example.mykmti.components.CButton
-import com.example.mykmti.components.CTextField
+import com.example.mykmti.components.CTextFieldE
+import com.example.mykmti.components.CTextFieldP
 import com.example.mykmti.components.DontHaveAccountRow
-import com.example.mykmti.navigasi.Screen
 import com.example.mykmti.ui.theme.AlegreyaFontFamily
 import com.example.mykmti.ui.theme.AlegreyaSansFontFamily
 
@@ -34,6 +36,8 @@ import com.example.mykmti.ui.theme.AlegreyaSansFontFamily
 fun HalamanLogin(
     navController: NavHostController,
 ) {
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -86,9 +90,19 @@ fun HalamanLogin(
 
 
             // Text Field
-            CTextField(hint = "Email Address", value = "")
+            CTextFieldE(hint = "Email Address",
+                value = email,
+                onValueChange = {
+                    email = it
+                }
+                )
 
-            CTextField(hint = "Password", value = "")
+            CTextFieldP(hint = "Password",
+                value = password,
+                onValueChange = {
+                    password = it
+                }
+            )
 
             Spacer(modifier = Modifier.height(24.dp))
 
@@ -103,11 +117,4 @@ fun HalamanLogin(
         }
 
     }
-}
-
-
-@Preview(showBackground = true, widthDp = 320, heightDp = 640)
-@Composable
-fun LoginScreenPreview() {
-    HalamanLogin(rememberNavController())
 }

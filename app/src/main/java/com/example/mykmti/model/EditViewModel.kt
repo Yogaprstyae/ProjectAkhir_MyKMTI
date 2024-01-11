@@ -52,7 +52,6 @@ class EditViewModel(
                     && divisi.isNotBlank()
                     && telpon.isNotBlank()
                     && namaKeg.isNotBlank()
-                    && desKeg.isNotBlank()
                     && tglKeg.isNotBlank()
                     && dana.isNotBlank()
         }
