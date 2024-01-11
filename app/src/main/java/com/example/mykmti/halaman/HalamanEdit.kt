@@ -43,7 +43,7 @@ fun ItemEditScreen(
     ) { innerPadding ->
         EntryAnggotaBody(
             uiStateAnggota = viewModel.anggotaUiState,
-            onSiswaValueChange = viewModel :: updateUIState,
+            onDetailValueChange = viewModel :: updateUIState,
             onSaveClick = {
 
                 coroutineScope.launch {

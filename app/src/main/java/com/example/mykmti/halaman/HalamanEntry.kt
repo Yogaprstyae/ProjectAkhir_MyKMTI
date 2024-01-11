@@ -2,7 +2,6 @@ package com.example.mykmti.halaman
 
 import android.app.DatePickerDialog
 import android.widget.DatePicker
-import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import com.example.mykmti.model.DetailAnggota
@@ -16,6 +15,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
@@ -31,12 +31,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -46,7 +44,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -79,19 +76,17 @@ fun EntryAnggotaScreen(
     val coroutineScope = rememberCoroutineScope()
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold (
-        modifier = modifier
-            .nestedScroll(scrollBehavior.nestedScrollConnection)
-            .background(color = Color.Cyan),
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             AnggotaTopAppBar(
                 title = stringResource(DestinasiEntry.titleRes),
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior)
-        }
-    ) { innerPadding ->
+        })
+    { innerPadding ->
         EntryAnggotaBody(
             uiStateAnggota = viewModel.uiStateAnggota,
-            onSiswaValueChange = viewModel::updateUIState,
+            onDetailValueChange = viewModel::updateUIState,
             onSaveClick = {
                 coroutineScope.launch {
                     viewModel.saveAnggota()
@@ -109,7 +104,7 @@ fun EntryAnggotaScreen(
 @Composable
 fun EntryAnggotaBody(
     uiStateAnggota: UIStateAnggota,
-    onSiswaValueChange: (DetailAnggota) -> Unit,
+    onDetailValueChange: (DetailAnggota) -> Unit,
     onSaveClick: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -119,13 +114,13 @@ fun EntryAnggotaBody(
     ){
         FormInputAnggota(
             detailAnggota = uiStateAnggota.detailAnggota,
-            onValueChange =  onSiswaValueChange,
+            onValueChange =  onDetailValueChange,
             modifier = Modifier.fillMaxWidth()
         )
         Button(
             onClick = onSaveClick,
             enabled = uiStateAnggota.isEntryValid,
-            shape = MaterialTheme.shapes.small,
+            shape = RoundedCornerShape(50.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(stringResource(R.string.btn_submit))
@@ -151,12 +146,13 @@ fun FormInputAnggota(
         OutlinedTextField(
             value = detailAnggota.nama,
             onValueChange = {onValueChange(detailAnggota.copy(nama = it))},
-            label = { Text("Nama Lengkap")},
+            shape = RoundedCornerShape(50.dp),
+            label = { Text("Nama")},
             leadingIcon = {
-                Icon(imageVector = Icons.Default.Person, contentDescription = null)
+                Icon(imageVector = Icons.Default.Person,
+                    contentDescription = null)
             },
-            modifier = Modifier
-                .fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             enabled = enabled,
             singleLine = true
         )
@@ -165,6 +161,7 @@ fun FormInputAnggota(
             value = detailAnggota.telpon,
             onValueChange = {onValueChange(detailAnggota.copy(telpon = it))},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            shape = RoundedCornerShape(50.dp),
             label = { Text("Telepon")},
             leadingIcon = {
                 Icon(imageVector = Icons.Default.Phone, contentDescription = null)
@@ -176,6 +173,7 @@ fun FormInputAnggota(
         OutlinedTextField(
             value = detailAnggota.namaKeg,
             onValueChange = {onValueChange(detailAnggota.copy(namaKeg = it))},
+            shape = RoundedCornerShape(50.dp),
             label = { Text("Nama Kegiatan")},
             leadingIcon = {
                 Icon(imageVector = Icons.Default.Edit, contentDescription = null)
@@ -187,6 +185,7 @@ fun FormInputAnggota(
         OutlinedTextField(
             value = detailAnggota.desKeg,
             onValueChange = {onValueChange(detailAnggota.copy(desKeg = it))},
+            shape = RoundedCornerShape(50.dp),
             label = { Text("Deskripsi Kegiatan")},
             leadingIcon = {
                 Icon(imageVector = Icons.Default.Edit, contentDescription = null)
@@ -200,6 +199,7 @@ fun FormInputAnggota(
             value = detailAnggota.dana,
             onValueChange = {onValueChange(detailAnggota.copy(dana = it))},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            shape = RoundedCornerShape(50.dp),
             label = { Text("Total Dana yang Dimimnta")},
             leadingIcon = {
                 Icon(imageVector = Icons.Default.ShoppingCart, contentDescription = null)
@@ -240,6 +240,7 @@ fun DivisiDropdownMenu(divisi: (String) -> Unit) {
                 modifier = Modifier.menuAnchor(),
                 readOnly = true,
                 value = selectedOptionText,
+                shape = RoundedCornerShape(50.dp),
                 label = { Text("Divisi")},
                 onValueChange = {},
                 singleLine = true,
@@ -300,6 +301,7 @@ fun EndDateTextField(endDate: (Long) -> Unit) {
         readOnly = true,
         value = selectedDate,
         onValueChange = {},
+        shape = RoundedCornerShape(50.dp),
         trailingIcon = { Icons.Default.DateRange },
         interactionSource = interactionSource
     )

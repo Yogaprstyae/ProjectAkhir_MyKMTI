@@ -13,8 +13,7 @@ data class Anggota(
     val namaKeg : String,
     val desKeg : String,
     val tglKeg : String,
-    val dana : String,
-    val pdf : String? = null
+    val dana : String
 )
 
 enum class Divisi {
