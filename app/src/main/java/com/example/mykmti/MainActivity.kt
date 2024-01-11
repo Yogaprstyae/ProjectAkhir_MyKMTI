@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
 import com.example.mykmti.navigasi.KMTIApp
+import com.example.mykmti.navigasi.Navigasi
 import com.example.mykmti.ui.theme.MyKMTITheme
 
 class MainActivity : ComponentActivity() {
@@ -18,13 +20,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyKMTITheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    KMTIApp()
-                }
+                val navController = rememberNavController()
+                Navigasi(navController = navController)
             }
         }
     }

@@ -18,6 +18,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.mykmti.R
+import com.example.mykmti.Splash
+import com.example.mykmti.SplashScreen
 import com.example.mykmti.halaman.DestinasiEntry
 import com.example.mykmti.halaman.DestinasiHome
 import com.example.mykmti.halaman.DetailsDestination
@@ -66,9 +68,12 @@ fun Navigasi(
 ) {
     NavHost(
         navController = navController,
-        startDestination = DestinasiHome.route,
+        startDestination = Screen.Splash.route,
         modifier = Modifier
     ) {
+        composable(route = Screen.Splash.route){
+            SplashScreen(navController)
+        }
         composable(DestinasiHome.route) {
             HomeScreen(navigateToItemEntry = {navController.navigate(DestinasiEntry.route)},
                 onDetailClick = { itemId ->
