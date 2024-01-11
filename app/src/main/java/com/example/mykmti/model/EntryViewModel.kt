@@ -18,7 +18,6 @@ class EntryViewModel(private val repositoryAnggota: RepositoryAnggota): ViewMode
                     && namaKeg.isNotBlank()
                     && desKeg.isNotBlank()
                     && tglKeg.isNotBlank()
-                    && dana.isNotBlank()
         }
     }
     fun updateUIState(detailAnggota: DetailAnggota) {

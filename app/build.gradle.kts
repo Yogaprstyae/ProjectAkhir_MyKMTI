@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId = "com.example.mykmti"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 32
         versionCode = 1
         versionName = "1.0"
 
@@ -77,5 +77,4 @@ dependencies {
     implementation("androidx.room:room-runtime:${rootProject.extra["room_version"]}")
     ksp("androidx.room:room-compiler:${rootProject.extra["room_version"]}")
     implementation("androidx.room:room-ktx:${rootProject.extra["room_version"]}")
-    implementation ("com.google.accompanist:accompanist-filesystem:x.y.z")
 }

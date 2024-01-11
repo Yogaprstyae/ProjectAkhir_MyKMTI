@@ -23,4 +23,5 @@
     <string name="attention">Perhatian</string>
     <string name="tanya">Data yang dihapus tidak dapat kembali lagi!</string>
     <string name="btn_back">Kembali</string>
+    <string name="end_date">Tanggal Akhir</string>
 </resources>
